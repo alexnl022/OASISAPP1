@@ -1,0 +1,40 @@
+Couper les extraits en 
+Fréquence maximum: 1633 Hz
+Fréquence echantillonage: 10 000 Hz
+On découpe l'extrait en 0,25 s, à partir de la troisième seconde.
+On transpose format .wav en vecteur colone. (wavread(nom du fichier))
+A la fin on utilise la fonction plot.
+
+
+[y,Fs]=wavread('adress dela fiché wav'); // pour passer le fichier veteur colonne en Waveread
+variabl=audioplayer(y,Fs);
+play(variabl);
+
+Attention: pour wavread, ne pas oublier les petites guillemets, on peut ajouter le path du fichier si il n'est pas dans le même repertoire que le programme. De plus, il faut ajouter l'extension.
+
+
+utilisation de soundsc par BD
+>> s=sin(2*pi*440/8000*(1:8000));
+>> soundsc(s,8000);
+
+Ici: Fs= 22050 Hz
+
+La longueur du vecteur est 165375 (22050*7,5) 
+
+Cela nous fais une longueur d'enregistrement de 7,5s. Un découpage en 0,25 s parait donc assez judicieux. En d'autre mot cela nous fait une découpe du vecteur en 30 vecteurs (ce qui limite les incertitudes) Et comme cela pour une note qui se prolonge d'un vecteur à l'autre on pourra faire l'association (même note)).
+Les longueurs des sous vecteurs sera donc: 165375/30 = 55125.
+
+Il faut faire une découpage de 0,01s donc faut changé donc la taille des echantillons.
+En supposant qu'une touche est appuyé en moyenne 0,10s, il faut faire un code pour savoir si entre deux échantillons on appuye toujours la même touche. 
+De même si il y a deux fréquences qui représentent une touche, (fréquence parasite) il faut qu'on prenne en compte les "fréquences dominantes" après qu'elle soient apparures sur 3 echantilons consécutifs. 
+De même sur un échantillons elle peuvent être peu "identifiables" donc entre deux series d'echantillons de notes identiques il faudra qu'on aie au moins deux échantillons "sans note".
+
+La taille des vecteurs de chaque echantillon passe alors à 165375/(25*)30 = 2205.
+
+Les choses à faire:
+-programme découpage du vecteurs
+-mise en place de l'analyse avec vecteur seuils (à partir de quelle valeur peut-on considerer que l'on a bien une fréquence précise) (utilisation de la fonction fourrier: donner un descriptif pour en garder une place écrite)
+-coder un programme qui au fréquence donner retourne un numéro (cf DTMF)
+-coder le programme décrit précédement qui permet de savoir si on n'a pas donner une touche deux fois, ou qu'on a pas (du aux fréquences parasites).
+
+   
