@@ -24,12 +24,11 @@ La longueur du vecteur est 165375 (22050*7,5)
 Cela nous fais une longueur d'enregistrement de 7,5s. Un découpage en 0,25 s parait donc assez judicieux. En d'autre mot cela nous fait une découpe du vecteur en 30 vecteurs (ce qui limite les incertitudes) Et comme cela pour une note qui se prolonge d'un vecteur à l'autre on pourra faire l'association (même note)).
 Les longueurs des sous vecteurs sera donc: 165375/30 = 55125.
 
-Il faut faire une découpage de 0,01s donc faut changé donc la taille des echantillons.
+Il faut faire une découpage de 0,0és donc faut changé donc la taille des echantillons.
 En supposant qu'une touche est appuyé en moyenne 0,10s, il faut faire un code pour savoir si entre deux échantillons on appuye toujours la même touche. 
 De même si il y a deux fréquences qui représentent une touche, (fréquence parasite) il faut qu'on prenne en compte les "fréquences dominantes" après qu'elle soient apparures sur 3 echantilons consécutifs. 
 De même sur un échantillons elle peuvent être peu "identifiables" donc entre deux series d'echantillons de notes identiques il faudra qu'on aie au moins deux échantillons "sans note".
-
-La taille des vecteurs de chaque echantillon passe alors à 165375/(25*)30 = 2205.
+La taille des vecteurs de chaque echantillon passe alors à 165375/350 = 2205*2.
 
 Les choses à faire:
 -programme découpage du vecteurs

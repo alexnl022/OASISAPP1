@@ -4,4 +4,8 @@ disp (Fs);
 disp('La longueur du vecteur Y est')
 disp(length(Y));
 
-% découpe du veccteur en 30 sous vecteurs
+X = reshape (Y , [],375);
+disp (X(5));
+
+disp(length(X));
+% découpe du veccteur en 30*25 sous vecteurs
