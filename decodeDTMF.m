@@ -34,5 +34,9 @@ function [chiffre] = decodeDTMF(signal, M, Fe)
              chiffre=9;
       case {[1336,941], [941, 1336]} 
              chiffre=0;
+      otherwise 
+             chiffre=999999;
    end;
 end;
+
+%j'ai modifié la fonction décode pour que lorsque aucune touche n'est trouvé, le numéro qui est retoourné soit 999999

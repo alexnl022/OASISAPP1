@@ -9,31 +9,33 @@ disp (Fs);
 disp('La longueur du vecteur Y est')
 disp(length(Y));
 
-disp (Y);
 
 X=decoupe(Y, Fs, tpech);
-[longueurvecteurechantillon, nombredevecteurechantillon]=size(X);
-
-disp(X);
+[longueurvecteurechantillon , nombredevecteurechantillon ]=size(X);
 
 %les trois lignes suivantes sont à supprimer
 disp('les dimmenssions de la matrice sont');
 disp(longueurvecteurechantillon);
 disp(nombredevecteurechantillon);
 
-G=[4,7,9,19];
-disp(G(2));
 
-
-Z=zeros(1,nombredevecteurechantillon);
-
+Z=zeros(1,nombredevecteurechantillon)';
 
 for i = 1:nombredevecteurechantillon
-Z(i) = decodeDTMF(X(:,1), longueurvecteurechantillon, Fs) ;
+Z(i) = decodeDTMF(X(:,i), longueurvecteurechantillon, Fs) ;
 endfor
-
 
 disp (Z);
 
 
 % A(:,2) extraction de la colonne 2 
+
+G=[4,7,9,19];
+disp(G(2));
+%méthode extraction dune composante
+G(2) = -5;
+disp(G);
+
+disp(decodeDTMF(X(:,1), longueurvecteurechantillon, Fs)) ;
+%utilisation de decodeDTMF/ on rajoute un ' pour transposer le vecteur
+
