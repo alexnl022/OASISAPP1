@@ -21,9 +21,12 @@ disp('les dimmenssions de la matrice sont');
 disp(longueurvecteurechantillon);
 disp(nombredevecteurechantillon);
 
+G=[4,7,9,19];
+disp(G(2));
+
+
 Z=zeros(1,nombredevecteurechantillon);
 
-disp(Z);
 
 for i = 1:nombredevecteurechantillon
 Z(i) = decodeDTMF(X(:,1), longueurvecteurechantillon, Fs) ;
