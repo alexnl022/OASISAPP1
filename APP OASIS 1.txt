@@ -30,10 +30,39 @@ De même si il y a deux fréquences qui représentent une touche, (fréquence parasi
 De même sur un échantillons elle peuvent être peu "identifiables" donc entre deux series d'echantillons de notes identiques il faudra qu'on aie au moins deux échantillons "sans note".
 La taille des vecteurs de chaque echantillon passe alors à 165375/350 = 2205*2.
 
+Fréquence usuel d'echantillonage des .wav: 11025, 22050, 44100 (et un peu plus mais c'est rare)
+on part donc sur une Fe = 22050 avec un temps d'echantillonage de 0,01 sec qui permettra de ne pas louper les notes et de verifier qu'il n'y a pas eu de pertrbation.
+
 Les choses à faire:
 -programme découpage du vecteurs
+	la crée 
+	la tester
 -mise en place de l'analyse avec vecteur seuils (à partir de quelle valeur peut-on considerer que l'on a bien une fréquence précise) (utilisation de la fonction fourrier: donner un descriptif pour en garder une place écrite)
 -coder un programme qui au fréquence donner retourne un numéro (cf DTMF)
 -coder le programme décrit précédement qui permet de savoir si on n'a pas donner une touche deux fois, ou qu'on a pas (du aux fréquences parasites).
+-faire un programme qui propose parmis plusieurs temps d'echantillonage en fonction de la fréquence d'echantillonage et la longueur du vecteur. 
+En soit cela parait un peu compliqueé, le plus simple finalement semblerait de rajouter un certain nombre de 0 au vecteur initial pour qu'il soit divisible par le nombre souhaiter. C'est donc un upgrade qui doit être réaliser dans la fonction découpe.
+
+ensemble des fonction que l'on possède déja:
+
+function [chiffre] = decodeDTMF(signal, M, Fe)
+  % Fe est la frequence d echantillonage de 'signal' 
+  % M est le nombre de points qu on considere dans la fft
+	%le nombre d'élément du vecteur à étudier?
+  % le resultat est la touche correspondant au son DTMF donne par signal
+	
+
+function [nouv_freq]=approche(anc_freq)
+
+function [mat] = decoupe(signal, Fe, temps)
+  %decoupe signal de frequence d echantillonage Fe
+  %en un certain nombre de morceaux de duree temps
+  % renvoit une matrice dont la premiere colonne correspond a la premiere partie du signal et dure t, la deuxieme colonne est le signal entre t et 2t, ...)
+
+explication de approche à Lucas
+
+
+
+ 
 
    
