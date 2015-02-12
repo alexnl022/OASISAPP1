@@ -1,11 +1,37 @@
 [Y,Fs]=wavread('enrpirate.wav');
+
+tpech=0,01;
+%la durée déchantllonage
+
+disp ('la fréquence déchantillonage est ')
 disp (Fs);
 
 disp('La longueur du vecteur Y est')
 disp(length(Y));
 
-X = reshape (Y , [],375);
-disp (X(5));
+X=decoupe(Y, Fs, tpech);
+[longueurvecteurechantillon, nombredevecteurechantillon]=size(X);
 
-disp(length(X));
-% découpe du veccteur en 30*25 sous vecteurs
+
+%les trois lignes suivantes sont à supprimer
+disp('les dimmenssions de la matrice sont');
+disp(longueurvecteurechantillon);
+disp(nombredevecteurechantillon);
+
+Z=zeros(1,nombredevecteurechantillon);
+
+disp(X);
+
+for i = 1:nombredevecteurechantillon
+Z(i) = decodeDTMF(X(:,1), longueurvecteurechantillon, Fs) ;
+endfor
+
+
+for i = 1:nombredevecteurechantillon
+Z(i) = decodeDTMF(X(:,1), longueurvecteurechantillon, Fs) ;
+endfor
+
+disp (Z);
+
+
+% A(:,2) extraction de la colonne 2 
