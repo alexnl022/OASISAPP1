@@ -13,6 +13,7 @@ function [chiffre] = decodeDTMF(signal, M, Fe)
   frequ2=x2*Fe/M;
   frequ_aproch1=approche(frequ1);
   frequ_aproch2=approche(frequ2);
+  
   switch [frequ_aproch1, frequ_aproch2]
       case {[1209,697], [697, 1209]} 
            chiffre=1;
