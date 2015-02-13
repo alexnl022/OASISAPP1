@@ -25,7 +25,16 @@ for i = 1:nombredevecteurechantillon
 Z(i) = decodeDTMF(X(:,i), longueurvecteurechantillon, Fs) ;
 endfor
 
-disp (Z);
+W=zeros(1,nombredevecteurechantillon)';
+
+
+k=1;
+for j = 1:nombredevecteurechantillon
+if (Z(j)<11) W(k)=Z(j); k=k+1;
+endif;
+endfor;
+
+disp (W);
 
 
 % A(:,2) extraction de la colonne 2 
